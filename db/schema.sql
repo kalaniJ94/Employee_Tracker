@@ -10,7 +10,7 @@ CREATE TABLE department(
 CREATE TABLE roles (
 id INT NOT NULL PRIMARY KEY,
 title VARCHAR(30),
-salary DECIMAL,
+salary DECIMAL(8,2),
 FOREIGN KEY(department_id)
 REFERENCES department(id)
 ON DELETE SET NULL

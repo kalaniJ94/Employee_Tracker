@@ -7,15 +7,15 @@ VALUES  ("Sales"),
 
 INSERT INTO roles(id, title, salary, department_id) 
 VALUES
-        (001, "Lead Salesperson", 85000, 1)
-        (002, "Salesperson", 60000, 1),
-        (003, "Legal Team Lead", 95000, 2),
-        (004, "Legal Team Member", 80000, 2),
-        (005, "Engineering Lead", 95000, 3),
-        (006, "Engineer", 80000, 3)
-        (007, "IT Technician", 65000, 4),
-        (008, "Finance Team Lead", 90000, 5),
-        (009, "Finance Team Member", 80000, 5);
+        (001, "Lead Salesperson", 85000.00, 1),
+        (002, "Salesperson", 60000.00, 1),
+        (003, "Legal Team Lead", 95000.00, 2),
+        (004, "Legal Team Member", 80000.00, 2),
+        (005, "Engineering Lead", 95000.00, 3),
+        (006, "Engineer", 80000.00, 3)
+        (007, "IT Technician", 65000.00, 4),
+        (008, "Finance Team Lead", 90000.00, 5),
+        (009, "Finance Team Member", 80000.00, 5);
 
 INSERT INTO employees(first_name, last_name, role_id, manager_id)
 VALUES  ("Robert", "Baratheon", 001),
