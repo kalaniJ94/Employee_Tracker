@@ -1,4 +1,7 @@
 const inquirer = require('inquirer');
+const connection = require('./connection');
+const functions = require('../js/functions');
+
 
 
 const navigate = () => {
@@ -13,9 +16,11 @@ const navigate = () => {
             'View All Departments',
             'View Employees by Department',
             'View Department Budget',
-            'Update Employee Roles',
+            'Update Employee Role',
             'Update Employee Manager',
             'Add Employee',
+            'Add Role',
+            'Add Department',
             'Remove Employee',
             'Remove Role',
             'Remove Department',
@@ -40,7 +45,7 @@ const navigate = () => {
         if (choices === 'View Department Budget'){
             viewDepartmentBudget();
         }
-        if (choices === 'Update Employee Roles'){
+        if (choices === 'Update Employee Role'){
             updateEmployeeRoles();
         }
         if (choices === 'Update Employee Manager'){
@@ -48,6 +53,12 @@ const navigate = () => {
         }
         if (choices === 'Add Employee'){
             addEmployee();
+        }
+        if (choices === 'Add Role'){
+            addRole();
+        }
+        if (choices === 'Add Department'){
+            addDepartment();
         }
         if (choices === 'View All Employees'){
             viewAllEmployees();
