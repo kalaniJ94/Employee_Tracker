@@ -1,9 +1,9 @@
-const connection = require('../db/connection');
+// const connection = require('../db/connection');
 const validate = require('./validate');
 const inquirer = require('inquirer');
 
 
-const viewAllRoles = () => {
+async function viewAllRoles(){
     const sql = `SELECT role.id, role.title, department.department_name AS department
                   FROM role
                   INNER JOIN department ON role.department_id = department.id`;
@@ -432,4 +432,4 @@ const removeDepartment = () => {
 });
 };
 
-module.exports = functions;
+module.exports = viewAllRoles();

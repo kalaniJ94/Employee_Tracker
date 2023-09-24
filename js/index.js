@@ -1,11 +1,13 @@
 const inquirer = require('inquirer');
-const connection = require('./connection');
-const functions = require('../js/functions');
+// const connection = require('../db/connection');
+const functions = require('./functions');
+const validate = require('../js/validate');
 
 
 
-const navigate = () => {
-    inquirer.prompt([
+async function navigate(){
+   await inquirer
+    .prompt([
         {
         name: 'choice',
         type: 'list',
@@ -26,54 +28,73 @@ const navigate = () => {
             'Remove Department',
             'Exit'
         ]
-}])
-    .then((answers) => {
-        const {choices} = answers;
+},
+])
+    .then((response) => {
+        const {choices} = response;
 
         if (choices === 'View All Employees'){
-            viewAllEmployees();
+            console.log("VAE");
+            functions().viewAllEmployees();
         }
         if (choices === 'View All Roles'){
-            viewAllRoles();
+            console.log("VAR");
+            functions().viewAllRoles();
         }
         if (choices === 'View All Departments'){
+            console.log("VAD");
             viewAllDepartments();
         }
         if (choices === 'View Employees by Department'){
+            console.log("VEBD");
             viewEmployeesByDepartment();
         }
         if (choices === 'View Department Budget'){
+            console.log("VDB");
             viewDepartmentBudget();
         }
         if (choices === 'Update Employee Role'){
+            console.log("UER");
             updateEmployeeRoles();
         }
         if (choices === 'Update Employee Manager'){
+            console.log("UEM");
             updateEmployeeRoles();
         }
         if (choices === 'Add Employee'){
+            console.log("AE");
             addEmployee();
         }
         if (choices === 'Add Role'){
+            console.log("AR");
             addRole();
         }
         if (choices === 'Add Department'){
+            console.log("AD");
             addDepartment();
         }
         if (choices === 'View All Employees'){
+            console.log("VAE");
             viewAllEmployees();
         }
         if (choices === 'Remove Employee'){
+            console.log("RE");
             removeEmployee();
         }
         if (choices === 'Remove Role'){
+            console.log("RR");
             removeRole();
         }
         if (choices === 'Remove Department'){
+            console.log("RD");
             removeDepartment();
         }
         if (choices === 'Exit'){
             connection.end();
         }
-    });
+    },
+  
+    );
 };
+
+navigate();
