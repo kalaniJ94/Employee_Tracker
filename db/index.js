@@ -1,18 +1,21 @@
 const connection = require('./connection')
+const inquirer = require('inquirer');
+const validate = require('../js/validate');
 class DB{
     constructor(connection){
         this.connection = connection;
     }
     viewEmployees(){
-        return this.connection.promise.query('SELECT employee.id, employee.first_name, employee.last_name,  role.title, department.department_name AS department, role.salary FROM employee, role, department WHERE department.id = role.department_id AND role.id = employee.role_id ORDER BY employee.id ASC')
+        return this.connection.promise().query('SELECT employeeList.id, employeeList.first_name, employeeList.last_name,  role.title, department.name AS department, role.salary FROM employeeList, role, department WHERE department.id = role.department_id AND role.id = employeeList.role_id ORDER BY employeeList.id ASC')
     }
     findAllRoles(){
-        return this.connection.promise().query(`SELECT role.id, role.title, department.department_name AS department
+        return this.connection.promise().query(`SELECT role.id, role.title, department.name AS department
         FROM role
         INNER JOIN department ON role.department_id = department.id`)
     }
     viewAllDepartments(){
-        return this.connection.promise().query( `SELECT department.id AS id, department.department_name AS department FROM department`)
+        return this.connection.promise().query( `SELECT * FROM department`)
+        
     }
     updateEmployeeRole(){ connection.promise().query(sql, (error, response) => {
         if (error) throw error;
@@ -74,10 +77,11 @@ class DB{
         
     }
     addRole(){
+        const sql = 'SELECT * FROM department'
         connection.promise().query(sql, (error, response) => {
             if (error) throw error;
             let deptNamesArray = [];
-            response.forEach((department) => { deptNamesArray.push(department.department_name); });
+            response.forEach((department) => { deptNamesArray.push(department.name); });
             deptNamesArray.push('Create Department');
             inquirer
                 .prompt([
@@ -146,12 +150,9 @@ class DB{
             let sql = `INSERT INTO department (department_name) VALUES (?)`;
             connection.query(sql, answer.newDepartment, (error, response) => {
                 if (error) throw error;
-                console.log(``);
-                console.log(chalk.greenBright(answer.newDepartment + ` Department successfully created!`));
-                console.log(``);
                 viewAllDepartments();
             });
-        });
+        })
     }
 }
   module.exports = new DB(connection);
