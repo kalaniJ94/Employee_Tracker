@@ -4,6 +4,8 @@
 
 This challenge is the first one that I have not entirely finished. Wrestling with a error wasted a couple of days and left me with not enough time to finish. That's not to say, however, that I did not enjoy this challenge. Sql is a unique and powerful language, one that I look forward to exploring more in the future! 
 
+RESUBMIT: I have dived back into the challenge, and totally have resigned my system. I started by greatly simplifying my file structure, making all sql commands come directly out of index.js, and the connection as well. I spent time researching sql commands to update my existing commands and finish those I had incomplete. 
+
 ## Table of Contents (Optional)
 
 If your README is long, add a table of contents to make it easy for users to find what they need.
